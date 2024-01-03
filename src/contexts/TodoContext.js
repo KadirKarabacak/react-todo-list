@@ -3,17 +3,17 @@ import { createContext, useContext, useReducer, useState } from "react";
 const todos = [
   {
     id: 1,
-    title: "Todo 1",
+    title: "Practice Context API",
     completed: false,
   },
   {
     id: 2,
-    title: "Todo 2",
-    completed: true,
+    title: "Practice State Management",
+    completed: false,
   },
   {
     id: 3,
-    title: "Todo 3",
+    title: "Learn TypeScript",
     completed: false,
   },
 ];
