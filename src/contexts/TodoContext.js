@@ -25,7 +25,7 @@ const todos = [
 ];
 
 const initialState = {
-  todos: [] || todos,
+  todos: todos,
   completed: false,
 };
 
@@ -105,7 +105,7 @@ function TodoProvider({ children }) {
       type: "ADD_TODO",
       payload: newTodo,
     });
-    console.log(newTodo);
+    console.log(todos);
 
     setIsOpen(false);
     setInputValue("");
