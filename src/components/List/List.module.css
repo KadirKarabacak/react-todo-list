@@ -1,0 +1,11 @@
+.list {
+  list-style: none;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  box-shadow: 0 1px 15px rgba(0, 0, 0, 0.05);
+}
+
+.list:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
