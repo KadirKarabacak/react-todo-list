@@ -29,12 +29,6 @@ const initialState = {
   completed: false,
 };
 
-// const generateRandomId = () => {
-//   return Math.random().toString(36).substring(2);
-// };
-
-// const id = generateRandomId();
-
 const reducer = (state, action) => {
   switch (action.type) {
     case "TAKE_TODO":
@@ -124,6 +118,13 @@ function TodoProvider({ children }) {
     });
   }
 
+  function handleToggle(id) {
+    dispatch({
+      type: "TOGGLE_TODO",
+      payload: id,
+    });
+  }
+
   return (
     <TodoContext.Provider
       value={{
@@ -136,6 +137,7 @@ function TodoProvider({ children }) {
         inputValue,
         isOpen,
         handleDelete,
+        handleToggle,
       }}
     >
       {children}

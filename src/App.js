@@ -1,6 +1,7 @@
 import { useList } from "./contexts/TodoContext";
 import "./index.css";
 import { TodoProvider } from "./contexts/TodoContext";
+import { useEffect, useRef } from "react";
 
 function App() {
   return (
@@ -30,7 +31,7 @@ function List() {
   return (
     <ul className="list">
       {todos?.map((todo) => (
-        <ListItem key={todo.id} id={todo.id}>
+        <ListItem todo={todo} key={todo.id} id={todo.id}>
           {todo.title}
         </ListItem>
       ))}
@@ -38,16 +39,29 @@ function List() {
   );
 }
 
-function ListItem({ children, id }) {
-  const { handleDelete } = useList();
+function ListItem({ children, id, todo }) {
+  const { handleDelete, handleToggle } = useList();
+  const checkbox = useRef(null);
+
+  useEffect(() => {
+    checkbox.current.checked = todo.completed;
+  }, [todo.completed]);
+
   return (
-    <div className="list_item_container">
+    <div className={`list_item_container ${todo.completed ? "complated" : ""}`}>
       <button onClick={() => handleDelete(id)} className="delete">
         x
       </button>
-      <li className="list_item">{children}</li>
+      <li className={`list_item ${todo.completed ? "complated" : ""}`}>
+        {children}
+      </li>
       <label className="checkbox_container">
-        <input className="checkbox" type="checkbox" />
+        <input
+          onClick={() => handleToggle(id)}
+          ref={checkbox}
+          className="checkbox"
+          type="checkbox"
+        />
         <div className="checkmark"></div>
       </label>
     </div>
