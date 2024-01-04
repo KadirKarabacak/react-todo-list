@@ -70,7 +70,7 @@ function TodoProvider({ children }) {
     const storedData = JSON.parse(localStorage.getItem("todos"));
     if (!storedData) return;
 
-    console.log("Stored Data:", storedData);
+    // console.log("Stored Data:", storedData);
     dispatch({ type: "TAKE_TODO", payload: storedData });
   }, []);
 
@@ -106,7 +106,7 @@ function TodoProvider({ children }) {
       type: "ADD_TODO",
       payload: newTodo,
     });
-    console.log(todos);
+    // console.log(todos);
 
     setIsOpen(false);
     setInputValue("");
