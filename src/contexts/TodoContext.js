@@ -6,26 +6,26 @@ import {
   useState,
 } from "react";
 
-// const todos = [
-//   {
-//     id: 1,
-//     title: "Practice Context API",
-//     completed: false,
-//   },
-//   {
-//     id: 2,
-//     title: "Practice State Management",
-//     completed: false,
-//   },
-//   {
-//     id: 3,
-//     title: "Learn TypeScript",
-//     completed: false,
-//   },
-// ];
+const todos = [
+  {
+    id: 1,
+    title: "Practice Context API",
+    completed: false,
+  },
+  {
+    id: 2,
+    title: "Practice State Management",
+    completed: false,
+  },
+  {
+    id: 3,
+    title: "Learn TypeScript",
+    completed: false,
+  },
+];
 
 const initialState = {
-  todos: [],
+  todos: [] || todos,
   completed: false,
 };
 
