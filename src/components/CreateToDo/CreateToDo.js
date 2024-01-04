@@ -11,6 +11,7 @@ export function CreateToDo() {
         }`}
       >
         <input
+          maxLength={40}
           required
           placeholder="Add some todo"
           className={styles.create_info}
