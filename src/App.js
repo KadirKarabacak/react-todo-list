@@ -29,7 +29,7 @@ function List() {
   const { todos } = useList();
   return (
     <ul className="list">
-      {todos.map((todo) => (
+      {todos?.map((todo) => (
         <ListItem key={todo.id} id={todo.id}>
           {todo.title}
         </ListItem>
@@ -66,7 +66,6 @@ function AddButton() {
 
 function CreateToDo() {
   const { isOpen, handleSubmit, inputValue, setInputValue } = useList();
-  console.log(inputValue);
   return (
     <>
       <form className={`create_screen ${isOpen ? "visible" : "invisible"}`}>

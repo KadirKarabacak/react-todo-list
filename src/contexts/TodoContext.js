@@ -1,4 +1,10 @@
-import { createContext, useContext, useReducer, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 
 const todos = [
   {
@@ -31,6 +37,8 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case "TAKE_TODO":
+      return { ...state, todos: action.payload };
     case "ADD_TODO":
       return {
         ...state,
@@ -63,6 +71,22 @@ function TodoProvider({ children }) {
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
+  // Get todos from local storage
+  useEffect(() => {
+    const storedData = JSON.parse(localStorage.getItem("todos"));
+
+    console.log("Stored Data:", storedData);
+    dispatch({ type: "TAKE_TODO", payload: storedData });
+  }, []);
+
+  // Set items to Local storage
+  useEffect(
+    function () {
+      localStorage.setItem("todos", JSON.stringify(todos));
+    },
+    [todos]
+  );
+
   // Handling form open
   function handleOpenForm() {
     setIsOpen((isOpen) => !isOpen);
@@ -89,6 +113,7 @@ function TodoProvider({ children }) {
     });
     console.log(newTodo);
 
+    setIsOpen(false);
     setInputValue("");
   }
 
