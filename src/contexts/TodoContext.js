@@ -68,6 +68,7 @@ function TodoProvider({ children }) {
   // Get todos from local storage
   useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem("todos"));
+    if (!storedData) return;
 
     console.log("Stored Data:", storedData);
     dispatch({ type: "TAKE_TODO", payload: storedData });
