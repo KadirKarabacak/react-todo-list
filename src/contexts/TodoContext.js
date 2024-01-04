@@ -6,26 +6,26 @@ import {
   useState,
 } from "react";
 
-const todos = [
-  {
-    id: 1,
-    title: "Practice Context API",
-    completed: false,
-  },
-  {
-    id: 2,
-    title: "Practice State Management",
-    completed: false,
-  },
-  {
-    id: 3,
-    title: "Learn TypeScript",
-    completed: false,
-  },
-];
+// const todos = [
+//   {
+//     id: 1,
+//     title: "Practice Context API",
+//     completed: false,
+//   },
+//   {
+//     id: 2,
+//     title: "Practice State Management",
+//     completed: false,
+//   },
+//   {
+//     id: 3,
+//     title: "Learn TypeScript",
+//     completed: false,
+//   },
+// ];
 
 const initialState = {
-  todos: todos,
+  todos: [],
   completed: false,
 };
 
@@ -36,7 +36,7 @@ const reducer = (state, action) => {
     case "ADD_TODO":
       return {
         ...state,
-        todos: [...state.todos, action.payload],
+        todos: [...state?.todos, action.payload],
       };
     case "DELETE_TODO":
       return {
