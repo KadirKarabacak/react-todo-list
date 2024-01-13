@@ -5,6 +5,7 @@ import {
   useReducer,
   useState,
 } from "react";
+import toast from "react-hot-toast";
 
 const todos = [
   {
@@ -106,7 +107,8 @@ function TodoProvider({ children }) {
       type: "ADD_TODO",
       payload: newTodo,
     });
-    // console.log(todos);
+
+    toast.success("Added Successfully");
 
     setIsOpen(false);
     setInputValue("");
@@ -117,6 +119,7 @@ function TodoProvider({ children }) {
       type: "DELETE_TODO",
       payload: id,
     });
+    toast.success("Deleted Successfully");
   }
 
   function handleToggle(id) {
@@ -124,6 +127,8 @@ function TodoProvider({ children }) {
       type: "TOGGLE_TODO",
       payload: id,
     });
+
+    toast("Successfully changed complate state", { icon: "🔀" });
   }
 
   return (
